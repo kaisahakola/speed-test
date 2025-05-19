@@ -1,0 +1,11 @@
+* {
+    background-color: #5db883;
+}
+
+#scores {
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: center;
+    justify-content: center;
+    grid-gap: 50px;
+}

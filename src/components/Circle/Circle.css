@@ -1,0 +1,12 @@
+#circle-wrapper {
+    border-radius: 50%;
+    height: 45vw;
+    width: 45vw;
+}
+
+@media screen and (min-width: 780px) {
+    #circle-wrapper {
+        height: 20vw;
+        width: 20vw;
+    }
+}

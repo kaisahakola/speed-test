@@ -3,11 +3,12 @@ import type {Colors} from "../../types/colors.ts";
 
 type CircleProps = {
     color: Colors;
+    opacity: number;
 }
 
-function Circle({ color }: CircleProps) {
+function Circle({ color, opacity }: CircleProps) {
     return (
-        <div style={{backgroundColor: color}} id="circle-wrapper"></div>
+        <div style={{backgroundColor: color, opacity: opacity}} id="circle-wrapper"></div>
     )
 }
 

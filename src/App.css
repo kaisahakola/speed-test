@@ -1,5 +1,6 @@
-* {
-    background-color: #5db883;
+body {
+    background-color: #61affd;
+    font-family: 'Fira Sans', sans-serif;
 }
 
 #scores {

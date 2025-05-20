@@ -25,6 +25,7 @@ function CircleContainer({ running }: CircleContainerProps) {
         } else if (intervalRef.current) {
             clearInterval(intervalRef.current);
             intervalRef.current = null;
+            setActiveIndex(-1);
         }
 
         return () => {

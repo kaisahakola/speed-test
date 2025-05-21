@@ -5,40 +5,37 @@ import HighScore from "./components/HighScore/HighScore.tsx";
 import Score from "./components/Score/Score.tsx";
 import StartGame from "./components/StartGame/StartGame.tsx";
 import GameEnded from "./components/GameEnded/GameEnded.tsx";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 
 function App() {
     const [running, setRunning] = useState<boolean>(false);
-    const [endGame, setEndGame] = useState<boolean>(false);
+    const [gameOver, setGameOver] = useState<boolean>(false);
+    const [score, setScore] = useState<number>(0);
 
-    useEffect(() => {
-        const handleKeyPress = (event: KeyboardEvent) => {
-            if (event.key === "q") {
-                setRunning(false);
-                setEndGame(true);
-            }
-        };
-
-        window.addEventListener("keydown", handleKeyPress);
-
-        return () => {
-            window.removeEventListener("keydown", handleKeyPress);
-        };
-    }, []);
+    const incrementScore = () => {
+        setScore(score + 1);
+    }
 
   return (
     <>
         <StartGame onStartGame={() => setRunning(true)} />
         <GameEnded onStartNewGame={() => {
             setRunning(true);
-            setEndGame(false);
-        }} endGame={endGame} />
+            setGameOver(false);
+            setScore(0)
+        }} gameOver={gameOver} finalScore={score} />
         <Header />
         <div id="scores">
             <HighScore />
-            <Score />
+            <Score score={score} />
         </div>
-        <CircleContainer running={running} />
+        <CircleContainer
+            running={running}
+            incrementScore={incrementScore}
+            onGameOver={() =>{
+                setGameOver(true)
+                setRunning(false)
+            }} />
     </>
   )
 }

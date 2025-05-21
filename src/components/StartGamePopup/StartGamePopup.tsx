@@ -5,7 +5,7 @@ interface StartGameProps {
     onStartGame: () => void;
 }
 
-function StartGame({ onStartGame }: StartGameProps) {
+function StartGamePopup({ onStartGame }: StartGameProps) {
     const [trigger, setTrigger] = useState<boolean>(true);
 
     const startGame = () => {
@@ -23,4 +23,4 @@ function StartGame({ onStartGame }: StartGameProps) {
     )
 }
 
-export default StartGame;
+export default StartGamePopup;

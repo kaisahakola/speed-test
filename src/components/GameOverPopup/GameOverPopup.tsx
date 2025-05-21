@@ -2,14 +2,14 @@ import PopUpWindow from "../PopUpWindow/PopUpWindow.tsx";
 
 interface GameEndedProps {
     onStartNewGame: () => void;
-    gameOver: boolean;
+    showGameOverPopup: boolean;
     finalScore: number;
 }
 
-function GameEnded({ onStartNewGame, gameOver, finalScore }: GameEndedProps) {
+function GameOverPopup({ onStartNewGame, showGameOverPopup, finalScore }: GameEndedProps) {
 
     return (
-        <PopUpWindow trigger={gameOver}>
+        <PopUpWindow trigger={showGameOverPopup}>
             <div className="game-ended">
                 <h3>Game over!</h3>
                 <p>Your score: {finalScore}</p>
@@ -19,4 +19,4 @@ function GameEnded({ onStartNewGame, gameOver, finalScore }: GameEndedProps) {
     )
 }
 
-export default GameEnded;
+export default GameOverPopup;

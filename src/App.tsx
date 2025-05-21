@@ -3,27 +3,48 @@ import CircleContainer from "./components/CircleContainer/CircleContainer.tsx";
 import Header from "./components/Header/Header.tsx";
 import HighScore from "./components/HighScore/HighScore.tsx";
 import Score from "./components/Score/Score.tsx";
-import StartGame from "./components/StartGame/StartGame.tsx";
-import GameEnded from "./components/GameEnded/GameEnded.tsx";
+import StartGamePopup from "./components/StartGamePopup/StartGamePopup.tsx";
+import GameOverPopup from "./components/GameOverPopup/GameOverPopup.tsx";
 import {useState} from "react";
 
 function App() {
     const [running, setRunning] = useState<boolean>(false);
-    const [gameOver, setGameOver] = useState<boolean>(false);
+    const [showGameOverPopup, setShowGameOverPopup] = useState<boolean>(false);
     const [score, setScore] = useState<number>(0);
+
+    const getIntervalTime = (score: number): number => {
+        if (score > 5 && score <= 10) return 900;
+        if (score > 10 && score <= 20) return 750;
+        if (score > 20 && score <= 30) return 600;
+        if (score > 30 && score <= 40) return 500;
+        if (score > 40 && score <= 60) return 450;
+        if (score > 60) return 400;
+        return 1500;
+    }
+    const intervalTime = getIntervalTime(score);
 
     const incrementScore = () => {
         setScore(score + 1);
     }
 
+    const handleStartNewGame = () => {
+        setRunning(true);
+        setShowGameOverPopup(false);
+        setScore(0);
+    }
+
+    const handleGameOver = () => {
+        setShowGameOverPopup(true);
+        setRunning(false);
+    }
+
   return (
     <>
-        <StartGame onStartGame={() => setRunning(true)} />
-        <GameEnded onStartNewGame={() => {
-            setRunning(true);
-            setGameOver(false);
-            setScore(0)
-        }} gameOver={gameOver} finalScore={score} />
+        <StartGamePopup onStartGame={() => setRunning(true)} />
+        <GameOverPopup
+            onStartNewGame={handleStartNewGame}
+            showGameOverPopup={showGameOverPopup}
+            finalScore={score} />
         <Header />
         <div id="scores">
             <HighScore />
@@ -32,10 +53,8 @@ function App() {
         <CircleContainer
             running={running}
             incrementScore={incrementScore}
-            onGameOver={() =>{
-                setGameOver(true)
-                setRunning(false)
-            }} />
+            onGameOver={handleGameOver}
+            intervalTime={intervalTime} />
     </>
   )
 }

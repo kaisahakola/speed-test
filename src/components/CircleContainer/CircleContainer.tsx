@@ -7,9 +7,10 @@ interface CircleContainerProps {
     running: boolean;
     incrementScore: () => void;
     onGameOver: () => void;
+    intervalTime: number;
 }
 
-function CircleContainer({ running, incrementScore, onGameOver }: CircleContainerProps) {
+function CircleContainer({ running, incrementScore, onGameOver, intervalTime }: CircleContainerProps) {
     const activeIndexRef = useRef<number>(-1);
     const previousIndex = useRef<number>(-1);
     const interval = useRef<number | null>(null);
@@ -67,7 +68,7 @@ function CircleContainer({ running, incrementScore, onGameOver }: CircleContaine
                 activeIndexRef.current = nextIndex;
                 previousIndex.current = nextIndex;
                 hasScored.current = false;
-            }, 1500)
+            }, intervalTime)
         } else if (interval.current) {
             clearInterval(interval.current);
             interval.current = null;
@@ -81,14 +82,38 @@ function CircleContainer({ running, incrementScore, onGameOver }: CircleContaine
             }
             window.removeEventListener("keydown", handleKeyPress);
         };
-    }, [activeIndexRef, incrementScore, onGameOver, running])
+    }, [activeIndexRef, incrementScore, intervalTime, onGameOver, running])
 
     return (
         <div id="circle-container">
-            <Circle color="red" opacity={activeIndex === activeCircleIndex.red ? 1 : 0.3} />
-            <Circle color="blue" opacity={activeIndex === activeCircleIndex.blue ? 1 : 0.3} />
-            <Circle color="green" opacity={activeIndex === activeCircleIndex.green ? 1 : 0.3} />
-            <Circle color="yellow" opacity={activeIndex === activeCircleIndex.yellow ? 1 : 0.3} />
+            <Circle
+                color="red"
+                opacity={activeIndex === activeCircleIndex.red ? 1 : 0.3}
+                shadow={hasScored.current && activeIndex === activeCircleIndex.red
+                    ? 'inset 0 0 20px #0e0d13'
+                    : ''}
+            />
+            <Circle
+                color="blue"
+                opacity={activeIndex === activeCircleIndex.blue ? 1 : 0.3}
+                shadow={hasScored.current && activeIndex === activeCircleIndex.blue
+                    ? 'inset 0 0 20px #0e0d13'
+                    : ''}
+            />
+            <Circle
+                color="green"
+                opacity={activeIndex === activeCircleIndex.green ? 1 : 0.3}
+                shadow={hasScored.current && activeIndex === activeCircleIndex.green
+                    ? 'inset 0 0 20px #0e0d13'
+                    : ''}
+            />
+            <Circle
+                color="yellow"
+                opacity={activeIndex === activeCircleIndex.yellow ? 1 : 0.3}
+                shadow={hasScored.current && activeIndex === activeCircleIndex.yellow
+                    ? 'inset 0 0 20px #0e0d13'
+                    : ''}
+            />
         </div>
     )
 }

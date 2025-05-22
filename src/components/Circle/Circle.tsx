@@ -1,15 +1,13 @@
 import './Circle.css'
-import type {Colors} from "../../types/colors.ts";
 
 type CircleProps = {
-    color: Colors;
-    opacity: number;
+    color: string;
     shadow: string;
 }
 
-function Circle({ color, opacity, shadow }: CircleProps) {
+function Circle({ color, shadow }: CircleProps) {
     return (
-        <div style={{backgroundColor: color, opacity: opacity, boxShadow: shadow}} id="circle-wrapper"></div>
+        <div style={{backgroundColor: color, boxShadow: shadow}} id="circle-wrapper"></div>
     )
 }
 

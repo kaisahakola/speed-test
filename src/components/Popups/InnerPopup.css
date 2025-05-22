@@ -1,3 +1,10 @@
+@font-face {
+    font-family: 'Anta';
+    src: url('../../assets/Anta/Anta-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 .inner-popup {
     display: flex;
     flex-direction: column;
@@ -8,12 +15,21 @@
         font-size: 2rem;
         margin-top: 0;
         margin-bottom: 0;
+        font-family: 'Anta', serif;
     }
 
     button {
         padding: 1.2rem 2.2rem;
         font-size: 1.8rem;
         width: fit-content;
+        border-radius: 10px;
+        background-color: #ff2424;
+        border: none;
+
+        &:hover {
+            background-color: #df2121;
+            cursor: pointer;
+        }
     }
 
     p {

@@ -19,8 +19,8 @@ function StartGamePopup({ onStartGame }: StartGameProps) {
         <PopUpWindow trigger={trigger}>
             <div className="inner-popup">
                 <h3>Welcome to the Speed Test Game!</h3>
-                <img alt="game logo" src={logo} width="100" height="100" />
-                <button onClick={() => startGame()}>Start Game</button>
+                <img alt="game logo" src={logo} width="125" height="125" />
+                <button onClick={() => startGame()}>Start</button>
             </div>
         </PopUpWindow>
     )

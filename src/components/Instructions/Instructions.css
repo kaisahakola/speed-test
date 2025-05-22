@@ -1,0 +1,46 @@
+#instructions-container {
+    position: absolute;
+    bottom: 0;
+    right: 1.5rem;
+
+    h1 {
+        background-color: #c5c5c5;
+        border: 1px solid black;
+        padding: 5px;
+        border-radius: 50%;
+        width: 2vw;
+        height: 2vw;
+        cursor: pointer;
+    }
+}
+
+#instructions-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+#instructions {
+    display: none;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 10px;
+    position: absolute;
+    bottom: 1.5rem;
+    right: 4rem;
+    width: 30vw;
+    padding: 40px 50px;
+
+    p {
+        font-size: 1.5rem;
+        margin-bottom: 0;
+    }
+
+    h4 {
+        font-size: 1.5rem;
+        margin-top: 0;
+    }
+}
+
+#instructions-wrapper:hover #instructions {
+    display: block;
+}

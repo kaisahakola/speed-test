@@ -1,4 +1,5 @@
 import PopUpWindow from "../PopUpWindow/PopUpWindow.tsx";
+import Instructions from "../../Instructions/Instructions.tsx";
 import '../InnerPopup.css';
 
 interface GameEndedProps {
@@ -15,6 +16,7 @@ function GameOverPopup({ onStartNewGame, showGameOverPopup, finalScore }: GameEn
                 <h3>Game over!</h3>
                 <p>Your score: {finalScore}</p>
                 <button onClick={onStartNewGame}>Play again</button>
+                <Instructions />
             </div>
         </PopUpWindow>
     )

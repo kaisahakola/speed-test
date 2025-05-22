@@ -1,10 +1,9 @@
 import './App.css'
 import CircleContainer from "./components/CircleContainer/CircleContainer.tsx";
 import Header from "./components/Header/Header.tsx";
-import HighScore from "./components/HighScore/HighScore.tsx";
-import Score from "./components/Score/Score.tsx";
-import StartGamePopup from "./components/StartGamePopup/StartGamePopup.tsx";
-import GameOverPopup from "./components/GameOverPopup/GameOverPopup.tsx";
+import ScoreContainer from "./components/Scoring/ScoreContainer/ScoreContainer.tsx";
+import StartGamePopup from "./components/Popups/StartGamePopup/StartGamePopup.tsx";
+import GameOverPopup from "./components/Popups/GameOverPopup/GameOverPopup.tsx";
 import {useState} from "react";
 
 function App() {
@@ -39,23 +38,20 @@ function App() {
     }
 
   return (
-    <>
-        <StartGamePopup onStartGame={() => setRunning(true)} />
-        <GameOverPopup
-            onStartNewGame={handleStartNewGame}
-            showGameOverPopup={showGameOverPopup}
-            finalScore={score} />
-        <Header />
-        <div id="scores">
-            <HighScore />
-            <Score score={score} />
-        </div>
-        <CircleContainer
-            running={running}
-            incrementScore={incrementScore}
-            onGameOver={handleGameOver}
-            intervalTime={intervalTime} />
-    </>
+      <>
+          <StartGamePopup onStartGame={() => setRunning(true)}/>
+          <GameOverPopup
+              onStartNewGame={handleStartNewGame}
+              showGameOverPopup={showGameOverPopup}
+              finalScore={score}/>
+          <Header/>
+          <CircleContainer
+              running={running}
+              incrementScore={incrementScore}
+              onGameOver={handleGameOver}
+              intervalTime={intervalTime}/>
+          <ScoreContainer score={score} />
+      </>
   )
 }
 

@@ -1,5 +1,6 @@
 import PopUpWindow from "../PopUpWindow/PopUpWindow.tsx";
 import {useState} from "react";
+import '../InnerPopup.css';
 
 interface StartGameProps {
     onStartGame: () => void;
@@ -15,8 +16,9 @@ function StartGamePopup({ onStartGame }: StartGameProps) {
 
     return (
         <PopUpWindow trigger={trigger}>
-            <div className="start-game">
+            <div className="inner-popup">
                 <h3>Welcome to The Speed Test game!</h3>
+                <br></br>
                 <button onClick={() => startGame()}>Start Game</button>
             </div>
         </PopUpWindow>

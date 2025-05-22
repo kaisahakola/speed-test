@@ -1,4 +1,4 @@
-import './Score.css'
+import '../ScoreDisplay.css'
 
 interface ScoreProps {
     score: number;
@@ -6,7 +6,7 @@ interface ScoreProps {
 
 function Score({ score }: ScoreProps ) {
     return (
-        <div>
+        <div className="score-display">
             <div>Your score: {score}</div>
         </div>
     )

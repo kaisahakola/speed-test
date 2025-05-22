@@ -88,31 +88,31 @@ function CircleContainer({ running, incrementScore, onGameOver, intervalTime }: 
         <div id="circle-container">
             <Circle
                 color="red"
-                opacity={activeIndex === activeCircleIndex.red ? 1 : 0.3}
+                opacity={activeIndex === activeCircleIndex.red ? 1 : 0.4}
                 shadow={hasScored.current && activeIndex === activeCircleIndex.red
-                    ? 'inset 0 0 20px #0e0d13'
-                    : ''}
+                    ? 'inset 10px 10px 10px #ae1515, inset -2px -3px #ae1515, 3px 10px 10px #6594C3FF'
+                    : 'inset -5px -10px #7e2c2c, 5px 15px 10px #6594C3FF'}
             />
             <Circle
                 color="blue"
-                opacity={activeIndex === activeCircleIndex.blue ? 1 : 0.3}
+                opacity={activeIndex === activeCircleIndex.blue ? 1 : 0.4}
                 shadow={hasScored.current && activeIndex === activeCircleIndex.blue
-                    ? 'inset 0 0 20px #0e0d13'
-                    : ''}
+                    ? 'inset 10px 10px 10px #1f1fa3, inset -2px -3px #1d1dc1, 3px 10px 10px #6594C3FF'
+                    : 'inset -5px -10px #2b2b77, 5px 15px 10px #6594C3FF'}
             />
             <Circle
                 color="green"
-                opacity={activeIndex === activeCircleIndex.green ? 1 : 0.3}
+                opacity={activeIndex === activeCircleIndex.green ? 1 : 0.4}
                 shadow={hasScored.current && activeIndex === activeCircleIndex.green
-                    ? 'inset 0 0 20px #0e0d13'
-                    : ''}
+                    ? 'inset 10px 10px 10px #085508, inset -2px -3px #086008, 3px 10px 10px #6594C3FF'
+                    : 'inset -5px -10px #0d490d, 5px 15px 10px #6594C3FF'}
             />
             <Circle
                 color="yellow"
-                opacity={activeIndex === activeCircleIndex.yellow ? 1 : 0.3}
+                opacity={activeIndex === activeCircleIndex.yellow ? 1 : 0.4}
                 shadow={hasScored.current && activeIndex === activeCircleIndex.yellow
-                    ? 'inset 0 0 20px #0e0d13'
-                    : ''}
+                    ? 'inset 10px 10px 10px #acac11, inset -2px -3px #acac11, 3px 10px 10px #6594C3FF'
+                    : 'inset -5px -10px #8e8e09, 5px 15px 10px #6594C3FF'}
             />
         </div>
     )

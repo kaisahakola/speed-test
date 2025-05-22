@@ -1,0 +1,16 @@
+.inner-popup {
+    h3 {
+        font-size: 2rem;
+        margin-top: 0;
+    }
+
+    button {
+        padding: 1.2rem 2.2rem;
+        font-size: 1.8rem;
+    }
+
+    p {
+        font-size: 2rem;
+        margin-bottom: 50px;
+    }
+}

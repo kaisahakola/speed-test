@@ -1,12 +1,5 @@
 body {
-    background-color: #61affd;
+    background-color: #93c0fb;
     font-family: 'Fira Sans', sans-serif;
-}
-
-#scores {
-    display: grid;
-    grid-template-columns: auto auto;
-    align-items: center;
-    justify-content: center;
-    grid-gap: 50px;
+    box-sizing: border-box;
 }

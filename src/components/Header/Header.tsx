@@ -2,7 +2,9 @@ import './Header.css'
 
 function Header() {
     return (
-        <h1 id="header">The Speed Test</h1>
+        <div id="header">
+            <h1>The Speed Test</h1>
+        </div>
     )
 }
 

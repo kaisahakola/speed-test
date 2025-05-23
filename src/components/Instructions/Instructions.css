@@ -29,6 +29,7 @@
     right: 4rem;
     width: 30vw;
     padding: 40px 50px;
+    box-shadow: 7px 7px 8px grey;
 
     p {
         font-size: 1.5rem;

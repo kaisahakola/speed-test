@@ -13,7 +13,7 @@ interface CircleContainerProps {
 function CircleContainer({ running, incrementScore, onGameOver, intervalTime }: CircleContainerProps) {
     const activeIndexRef = useRef<number>(-1);
     const previousIndex = useRef<number>(-1);
-    const interval = useRef<number | null>(null);
+    const interval = useRef<ReturnType<typeof setInterval> | null>(null);
     const hasScored = useRef<boolean>(false)
     const [activeIndex, setActiveIndex] = useState<number>(-1);
 
@@ -79,6 +79,7 @@ function CircleContainer({ running, incrementScore, onGameOver, intervalTime }: 
         return () => {
             if (interval.current) {
                 clearInterval(interval.current);
+                interval.current = null;
             }
             window.removeEventListener("keydown", handleKeyPress);
         };

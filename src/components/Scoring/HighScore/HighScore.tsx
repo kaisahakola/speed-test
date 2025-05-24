@@ -1,9 +1,13 @@
 import '../ScoreDisplay.css'
 
-function HighScore() {
+interface HighScoreProps {
+    highScore: number;
+}
+
+function HighScore({ highScore }: HighScoreProps) {
     return (
         <div className="score-display">
-            <div>High Score: 0</div>
+            <div>High Score: {highScore}</div>
         </div>
     )
 }

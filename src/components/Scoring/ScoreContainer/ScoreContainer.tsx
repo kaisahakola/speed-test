@@ -4,13 +4,14 @@ import './ScoreContainer.css';
 
 interface ScoreContainerProps {
     score: number;
+    highScore: number;
 }
 
-function ScoreContainer({ score }: ScoreContainerProps) {
+function ScoreContainer({ score, highScore }: ScoreContainerProps) {
     return (
         <div id='score-container'>
             <Score score={score} />
-            <HighScore />
+            <HighScore highScore={highScore} />
         </div>
     )
 }

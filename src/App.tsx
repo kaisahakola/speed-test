@@ -4,27 +4,34 @@ import Header from "./components/Header/Header.tsx";
 import ScoreContainer from "./components/Scoring/ScoreContainer/ScoreContainer.tsx";
 import StartGamePopup from "./components/Popups/StartGamePopup/StartGamePopup.tsx";
 import GameOverPopup from "./components/Popups/GameOverPopup/GameOverPopup.tsx";
-import {useState} from "react";
+import {useState, useEffect } from "react";
+import { incrementScore } from "./scripts/incrementScore.ts";
+import { getIntervalTime } from "./scripts/getIntervalTime.ts";
+import { getHighScore, saveHighScore, resetHighScore } from './services/highScoreServices.ts';
 
 function App() {
     const [running, setRunning] = useState<boolean>(false);
     const [showGameOverPopup, setShowGameOverPopup] = useState<boolean>(false);
     const [score, setScore] = useState<number>(0);
-
-    const getIntervalTime = (score: number): number => {
-        if (score > 5 && score <= 10) return 900;
-        if (score > 10 && score <= 20) return 750;
-        if (score > 20 && score <= 30) return 600;
-        if (score > 30 && score <= 40) return 500;
-        if (score > 40 && score <= 60) return 450;
-        if (score > 60) return 400;
-        return 1500;
-    }
+    const [finalScore, setFinalScore] = useState<number>(0);
+    const [highScore, setHighScore] = useState<number>(0);
+    const [displayHighScore, setDisplayHighScore] = useState<number>(0);
+    const [showNewHighScoreText, setShowNewHighScoreText] = useState<boolean>(false);
     const intervalTime = getIntervalTime(score);
 
-    const incrementScore = () => {
-        setScore(score + 1);
-    }
+    useEffect(() => {
+        getHighScore(setHighScore, setDisplayHighScore);
+
+        const handleReset = (event: KeyboardEvent) => {
+            resetHighScore(event, setHighScore, setDisplayHighScore)
+        }
+
+        window.addEventListener('keydown', handleReset);
+
+        return () => {
+            window.removeEventListener('keydown', handleReset);
+        }
+    }, [])
 
     const handleStartNewGame = () => {
         setRunning(true);
@@ -35,6 +42,15 @@ function App() {
     const handleGameOver = () => {
         setShowGameOverPopup(true);
         setRunning(false);
+        setFinalScore(score);
+
+        if (score > highScore) {
+            setHighScore(score);
+            saveHighScore(score);
+            setShowNewHighScoreText(true);
+        } else {
+            setShowNewHighScoreText(false);
+        }
     }
 
   return (
@@ -43,14 +59,18 @@ function App() {
           <GameOverPopup
               onStartNewGame={handleStartNewGame}
               showGameOverPopup={showGameOverPopup}
-              finalScore={score}/>
+              finalScore={finalScore}
+              highScore={highScore}
+              showNewHighScoreText={showNewHighScoreText}
+          />
           <Header/>
           <CircleContainer
               running={running}
-              incrementScore={incrementScore}
+              incrementScore={() => incrementScore(setScore, setDisplayHighScore, score, displayHighScore)}
               onGameOver={handleGameOver}
-              intervalTime={intervalTime}/>
-          <ScoreContainer score={score} />
+              intervalTime={intervalTime}
+          />
+          <ScoreContainer score={score} highScore={displayHighScore} />
       </>
   )
 }

@@ -88,24 +88,28 @@ function CircleContainer({ running, incrementScore, onGameOver, intervalTime }: 
     return (
         <div id="circle-container">
             <Circle
+                pressKey="A"
                 color={activeIndex === activeCircleIndex.red ? "red" : "#752727"}
                 shadow={hasScored.current && activeIndex === activeCircleIndex.red
                     ? 'inset 10px 10px 10px #ae1515, inset -2px -3px #ae1515, 3px 10px 10px #9c9999'
                     : 'inset -5px -10px #7e2c2c, 5px 15px 10px #9c9999'}
             />
             <Circle
+                pressKey="S"
                 color={activeIndex === activeCircleIndex.blue ? "#00d0ff" : "#012b37"}
                 shadow={hasScored.current && activeIndex === activeCircleIndex.blue
                     ? 'inset 10px 10px 10px #176f7c, inset -2px -3px #003b4c, 3px 10px 10px #9c9999'
                     : 'inset -5px -10px #003b4c, 5px 15px 10px #9c9999'}
             />
             <Circle
+                pressKey="D"
                 color={activeIndex === activeCircleIndex.green ? "#04e104" : "#053205"}
                 shadow={hasScored.current && activeIndex === activeCircleIndex.green
                     ? 'inset 10px 10px 10px #1c851c, inset -2px -3px #086008, 3px 10px 10px #9c9999'
                     : 'inset -5px -10px #0d490d, 5px 15px 10px #9c9999'}
             />
             <Circle
+                pressKey="F"
                 color={activeIndex === activeCircleIndex.yellow ? "yellow" : "#777709"}
                 shadow={hasScored.current && activeIndex === activeCircleIndex.yellow
                     ? 'inset 10px 10px 10px #acac11, inset -2px -3px #acac11, 3px 10px 10px #9c9999'

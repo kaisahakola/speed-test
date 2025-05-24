@@ -20,10 +20,10 @@ function App() {
     const intervalTime = getIntervalTime(score);
 
     useEffect(() => {
-        getHighScore(setHighScore, setDisplayHighScore);
+        void getHighScore(setHighScore, setDisplayHighScore);
 
-        const handleReset = (event: KeyboardEvent) => {
-            resetHighScore(event, setHighScore, setDisplayHighScore)
+        const handleReset = async (event: KeyboardEvent) => {
+            await resetHighScore(event, setHighScore, setDisplayHighScore)
         }
 
         window.addEventListener('keydown', handleReset);
@@ -39,14 +39,14 @@ function App() {
         setScore(0);
     }
 
-    const handleGameOver = () => {
+    const handleGameOver = async () => {
         setShowGameOverPopup(true);
         setRunning(false);
         setFinalScore(score);
 
         if (score > highScore) {
             setHighScore(score);
-            saveHighScore(score);
+            await saveHighScore(score);
             setShowNewHighScoreText(true);
         } else {
             setShowNewHighScoreText(false);

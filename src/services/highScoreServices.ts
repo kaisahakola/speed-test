@@ -1,5 +1,4 @@
 import { database } from '../config/firebase.ts';
-// import { ref, set, get } from "firebase/database";
 import React from "react";
 import { doc, setDoc, getDoc } from "firebase/firestore";
 

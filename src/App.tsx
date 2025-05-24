@@ -4,7 +4,7 @@ import Header from "./components/Header/Header.tsx";
 import ScoreContainer from "./components/Scoring/ScoreContainer/ScoreContainer.tsx";
 import StartGamePopup from "./components/Popups/StartGamePopup/StartGamePopup.tsx";
 import GameOverPopup from "./components/Popups/GameOverPopup/GameOverPopup.tsx";
-import {useState, useEffect } from "react";
+import {useState, useEffect, useRef} from "react";
 import { incrementScore } from "./scripts/incrementScore.ts";
 import { getIntervalTime } from "./scripts/getIntervalTime.ts";
 import { getHighScore, saveHighScore, resetHighScore } from './services/highScoreServices.ts';
@@ -18,6 +18,7 @@ function App() {
     const [displayHighScore, setDisplayHighScore] = useState<number>(0);
     const [showNewHighScoreText, setShowNewHighScoreText] = useState<boolean>(false);
     const intervalTime = getIntervalTime(score);
+    const resetActiveIndexRef = useRef<() => void>(() => {});
 
     useEffect(() => {
         void getHighScore(setHighScore, setDisplayHighScore);
@@ -42,6 +43,7 @@ function App() {
     const handleGameOver = async () => {
         setShowGameOverPopup(true);
         setRunning(false);
+        resetActiveIndexRef.current();
         setFinalScore(score);
 
         if (score > highScore) {
@@ -69,6 +71,7 @@ function App() {
               incrementScore={() => incrementScore(setScore, setDisplayHighScore, score, displayHighScore)}
               onGameOver={handleGameOver}
               intervalTime={intervalTime}
+              resetActiveIndexRef={resetActiveIndexRef}
           />
           <ScoreContainer score={score} highScore={displayHighScore} />
       </>

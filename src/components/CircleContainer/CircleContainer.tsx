@@ -1,6 +1,6 @@
 import './CircleContainer.css'
 import Circle from "../Circle/Circle.tsx";
-import { useEffect, useRef, useState} from "react";
+import React, { useEffect, useRef, useState} from "react";
 import type {Colors} from "../../types/colors.ts";
 
 interface CircleContainerProps {
@@ -8,9 +8,10 @@ interface CircleContainerProps {
     incrementScore: () => void;
     onGameOver: () => void;
     intervalTime: number;
+    resetActiveIndexRef: React.RefObject<() => void>;
 }
 
-function CircleContainer({ running, incrementScore, onGameOver, intervalTime }: CircleContainerProps) {
+function CircleContainer({ running, incrementScore, onGameOver, intervalTime, resetActiveIndexRef }: CircleContainerProps) {
     const activeIndexRef = useRef<number>(-1);
     const previousIndex = useRef<number>(-1);
     const interval = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -23,6 +24,13 @@ function CircleContainer({ running, incrementScore, onGameOver, intervalTime }: 
         green: 2,
         yellow: 3
     }
+
+    useEffect(() => {
+        resetActiveIndexRef.current = () => {
+            activeIndexRef.current = -1;
+            setActiveIndex(-1);
+        }
+    }, []);
 
     useEffect(() => {
         const keyMap = {

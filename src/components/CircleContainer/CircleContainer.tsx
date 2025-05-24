@@ -69,7 +69,7 @@ function CircleContainer({ running, incrementScore, onGameOver, intervalTime }: 
                 previousIndex.current = nextIndex;
                 hasScored.current = false;
             }, intervalTime)
-        } else if (interval.current) {
+        } else if (interval.current && !running) {
             clearInterval(interval.current);
             interval.current = null;
             activeIndexRef.current = -1;

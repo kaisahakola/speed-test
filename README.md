@@ -8,7 +8,7 @@ saved and shown on the screen.
 
 Frontend of the application has been made with React and TypeScript. The app is very frontend focused since the
 backend is very simple and small. The high score is saved to a simple Firebase Firestore database. Inside
-config and services directories can be found the code that handles the backend code. 
+config and services directories can be found the code that handles the database connections. 
 
 The hosting of the website is done with Netlify. The app can be found from
 [speedtestgame.netlify.app/](https://speedtestgame.netlify.app/).

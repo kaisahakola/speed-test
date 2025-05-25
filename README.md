@@ -11,4 +11,4 @@ backend is very simple and small. The high score is saved to a simple Firebase F
 config and services directories can be found the code that handles the backend code. 
 
 The hosting of the website is done with Netlify. The app can be found from
-[`speedtestgame.netlify.app/`](#https://speedtestgame.netlify.app/).
+[speedtestgame.netlify.app/](https://speedtestgame.netlify.app/).
